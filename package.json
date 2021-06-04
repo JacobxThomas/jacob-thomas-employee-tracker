@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon server.js"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> 5cf1ac98ec5888d2f26cc93fe88dd1daf22fa756
   },
   "repository": {
     "type": "git",
