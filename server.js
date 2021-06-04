@@ -97,3 +97,30 @@ function viewDepartments() {
     });
 };
  
+function viewRoles() {
+
+    let query = "SELECT * FROM role";
+
+    connection.query(query, (error, response) => {
+        if (error) throw error;
+
+        console.table(response);
+
+        mainMenu();
+    });
+};
+
+function viewEmployees() {
+
+    let query = "SELECT * FROM employee";
+
+    connection.query(query, (error, response) => {
+        if (error) throw error;
+
+        console.table(response);
+
+        mainMenu();
+    });
+};
+ 
+ 
