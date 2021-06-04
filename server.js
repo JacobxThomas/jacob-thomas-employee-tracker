@@ -1,19 +1,8 @@
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table");
-<<<<<<< HEAD
 const express = require("express")
 require("dotenv").config()
-=======
-
-const connectionProperties = {
-    host: "127.0.0.1",
-    port: 3306,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: "employee_DB"
-}
->>>>>>> 5cf1ac98ec5888d2f26cc93fe88dd1daf22fa756
 
 const app = express();
 const PORT = 3001;
@@ -21,7 +10,6 @@ const PORT = 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-<<<<<<< HEAD
 const connectionProperties = {
     host: "127.0.0.1",
     port: 3306,
@@ -37,11 +25,7 @@ connection.connect(function (error) {
         console.error("error");
         return;
     }
-=======
-connection.connect(function (err) {
-    if (err) console.log("error");
 
->>>>>>> 5cf1ac98ec5888d2f26cc93fe88dd1daf22fa756
     console.log("~~~ EMPLOYEE MANAGEMENT SYSTEM ~~~");
     mainMenu();
 });
@@ -49,7 +33,7 @@ connection.connect(function (err) {
 function mainMenu() {
     inquirer.prompt({
         name: "menu",
-        type: "list",
+        type: "rawlist",
         message: "Main Menu",
         choices: [
             "View Departments",
@@ -58,8 +42,6 @@ function mainMenu() {
             "Add Department",
             "Add Role",
             "Add Employee",
-<<<<<<< HEAD
-            "Update Employee Role",
             "Exit"
         ]
     })
@@ -114,39 +96,4 @@ function viewDepartments() {
         mainMenu();
     });
 };
-=======
-            "Update Employee Role"]
-    })
-        .then(function (answer) {
-            switch (answer.action) {
-                case "View all employees":
-                    viewAllEmp();
-                    break;
-
-                case "View all employees by department":
-                    viewAllEmpByDept();
-                    break;
-
-                case "View all employees by role":
-                    viewAllEmpByRole();
-                    break;
-
-                case "Add employee":
-                    addEmp();
-                    break;
-
-                case "Add department":
-                    addDept();
-                    break;
-                case "Add role":
-                    addRole();
-                    break;
-                case "Update employee role":
-                    updateEmpRole();
-                    break;
-            }
-
-        }
-        )
-};
->>>>>>> 5cf1ac98ec5888d2f26cc93fe88dd1daf22fa756
+ 
