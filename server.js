@@ -33,7 +33,7 @@ connection.connect(function (error) {
 function mainMenu() {
     inquirer.prompt({
         name: "menu",
-        type: "rawlist",
+        type: "list",
         message: "Main Menu",
         choices: [
             "View Departments",
@@ -96,7 +96,7 @@ function viewDepartments() {
         mainMenu();
     });
 };
- 
+
 function viewRoles() {
 
     let query = "SELECT * FROM role";
@@ -122,5 +122,96 @@ function viewEmployees() {
         mainMenu();
     });
 };
- 
- 
+
+function addDepartment() {
+    inquirer.prompt([
+        {
+            name: "name",
+            type: "input",
+            message: "Enter department name"
+        }])
+        .then(function (answer) {
+            connection.query(
+                `INSERT INTO department SET ?`,
+                {
+                    name: answer.name,
+                },
+                function (error, response) {
+                    if (error) throw error;
+                    console.log("Successfully created new departemrnt");
+                    mainMenu();
+                }
+            )
+        })
+};
+
+function addRole() {
+    inquirer.prompt([
+        {
+            name: "title",
+            type: "input",
+            message: "Enter role title"
+        },
+        {
+            name: "salary",
+            type: "input",
+            message: "Enter role salary"
+        },
+        {
+            name: "department",
+            type: "input",
+            message: "Enter department ID"
+        },
+    ])
+        .then(function (answer) {
+            connection.query(
+                `INSERT INTO role SET ?`,
+                {
+                    title: answer.title,
+                    salary: answer.salary,
+                    department_id: answer.department,
+                },
+                function (error, response) {
+                    if (error) throw error;
+                    console.log("Successfully created new role");
+                    mainMenu();
+                }
+            )
+        })
+};
+
+function addEmployee() {
+    inquirer.prompt([
+        {
+            name: "firstname",
+            type: "input",
+            message: "Enter employee's first name"
+        },
+        {
+            name: "lastname",
+            type: "input",
+            message: "Enter employee's last name"
+        },
+        {
+            name: "roleID",
+            type: "input",
+            message: "Enter employee's role ID"
+        },
+    ])
+        .then(function (answer) {
+            connection.query(
+                `INSERT INTO employee SET ?`,
+                {
+                    first_name: answer.firstname,
+                    last_name: answer.lastname,
+                    role_id: answer.roleID
+                },
+                function (error, response) {
+                    if (error) throw error;
+                    console.log("Successfully created new employee");
+                    mainMenu();
+                }
+            )
+        })
+};
+
