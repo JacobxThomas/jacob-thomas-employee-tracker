@@ -1,6 +1,6 @@
 drop database if exists employee_db;
 create database employee_db;
-use emplyee_db: 
+use employee_db;
 
 create table employee (
   id int not null primary key auto_increment,
